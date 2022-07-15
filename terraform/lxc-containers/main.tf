@@ -19,8 +19,8 @@ resource "proxmox_lxc" "basic" {
     ip     = "dhcp"
   }
 
-    features {
-    keyctl    = true
+  features {
+    keyctl  = true
     nesting = true
   }
 }
