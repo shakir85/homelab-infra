@@ -44,7 +44,9 @@ resource "proxmox_vm_qemu" "vm_resource" {
       HOST    = "${proxmox_vm_qemu.vm_resource.default_ipv4_address}"
       # SSH_KEY = "../terraform/main.pem"
     }
-    command = ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i $HOST, docker.yml
+    command = <<EOF
+              ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i $HOST, docker.yml
+              EOF
   }
 
 }
