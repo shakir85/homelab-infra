@@ -26,14 +26,17 @@ variable "storage_pool" {
 }
 
 variable "disk_size" {
-  description = "VM disk size [e.g. \"8G\"]"
+  description = "VM disk size number and M, K or G quoted [e.g. \"8G\"]"
 }
 
 variable "vm_cores" {
+  description = "Integer number, no quotes [e.g. 2]"
 }
 
 variable "vm_sockets" {
+  description = "Integer number, no quotes [e.g. 1]"
 }
 
 variable "vm_memory" {
+  description = "Integer number, no quotes [e.g. 1028]"
 }

@@ -21,11 +21,11 @@ variable "container_name" {
 }
 
 variable "disk_size" {
-  type = string
+  type        = string
   description = "Lxc disk size [e.g. \"8G\"]"
 }
 
 variable "pxmx_storage" {
-  type = string
+  type        = string
   description = "pve storage [local, local-lvm, ssd-r10]"
 }
