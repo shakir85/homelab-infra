@@ -21,7 +21,7 @@ variable "vm_description" {
 }
 
 variable "storage_pool" {
-  type    = string
+  type        = string
   description = "Enter storage pool: [local, local-lvm, ssd-r10]"
 }
 
@@ -42,6 +42,6 @@ variable "vm_memory" {
 }
 
 variable "cloud_images" {
-  type = string
+  type        = string
   description = "OS image, choose: [debian11-cloud, centos7-cloud]"
 }

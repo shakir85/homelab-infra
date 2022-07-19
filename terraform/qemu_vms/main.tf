@@ -4,13 +4,13 @@ resource "proxmox_vm_qemu" "vm_resource" {
   target_node = "pve"
   agent       = 1
 
-  clone      = var.cloud_images
-  cores      = var.vm_cores
-  sockets    = var.vm_sockets
-  memory     = var.vm_memory
-  cpu        = "host"
+  clone   = var.cloud_images
+  cores   = var.vm_cores
+  sockets = var.vm_sockets
+  memory  = var.vm_memory
+  cpu     = "host"
   # full_clone = false
-  os_type    = "cloud-init"
+  os_type = "cloud-init"
 
   network {
     bridge = "vmbr0"
