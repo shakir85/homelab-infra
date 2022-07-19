@@ -21,12 +21,12 @@ variable "vm_description" {
 }
 
 variable "storage_pool" {
-  type    = list(string)
-  default = ["local", "local-lvm", "ssd-r10"]
+  type    = string
+  description = "Enter storage pool: [local, local-lvm, ssd-r10]"
 }
 
 variable "disk_size" {
-  description = "VM disk size number and M, K or G quoted [e.g. \"8G\"]"
+  description = "VM disk size number + M, K or G quoted [e.g. \"8G\"]"
 }
 
 variable "vm_cores" {
@@ -39,4 +39,9 @@ variable "vm_sockets" {
 
 variable "vm_memory" {
   description = "Integer number, no quotes [e.g. 1028]"
+}
+
+variable "cloud_images" {
+  type = string
+  description = "OS image, choose: [debian11-cloud, centos7-cloud]"
 }

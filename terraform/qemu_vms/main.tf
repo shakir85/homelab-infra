@@ -4,7 +4,7 @@ resource "proxmox_vm_qemu" "vm_resource" {
   target_node = "pve"
   agent       = 1
 
-  clone      = "debian-11-generic-amd64-20220711-1073.qcow2" # to be parameterized for Centos & RHEL
+  clone      = var.cloud_images
   cores      = var.vm_cores
   sockets    = var.vm_sockets
   memory     = var.vm_memory
@@ -19,34 +19,8 @@ resource "proxmox_vm_qemu" "vm_resource" {
 
   disk {
     type    = "scsi"
-    storage = var.storage_pool[2]
+    storage = var.storage_pool
     size    = var.disk_size
-  }
-
-  tags = "foo,bar,test"
-
-  # Ansible playbooks execution block
-  provisioner "remote-exec" {
-    inline = ["echo 'Wait for SSH connection...'"]
-
-    connection {
-      type        = "ssh"
-      user        = "shakir"
-      host        = proxmox_vm_qemu.vm_resource.default_ipv4_address
-      # private_key = tls_private_key.private_ssh_key.private_key_pem
-    }
-  }
-
-  provisioner "local-exec" {
-    working_dir = "../../ansible"
-    interpreter = ["bash", "-c"]
-    environment = {
-      HOST    = "${proxmox_vm_qemu.vm_resource.default_ipv4_address}"
-      # SSH_KEY = "../terraform/main.pem"
-    }
-    command = <<EOF
-              ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu -i $HOST, docker.yml
-              EOF
   }
 
 }
