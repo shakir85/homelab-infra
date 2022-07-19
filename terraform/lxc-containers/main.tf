@@ -1,7 +1,7 @@
 resource "proxmox_lxc" "basic" {
   target_node  = "pve"
   hostname     = var.container_name
-  ostemplate   = "local:vztmpl/ubuntu-20.04-standard_20.04-1_amd64.tar.gz"
+  ostemplate   = "local:vztmpl/${var.container_template}"
   password     = var.container_password
   unprivileged = true
 
